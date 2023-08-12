@@ -1,27 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    font-family: 'Nunito', sans-serif;
+}
+
+.bg_gradient{
+    @apply bg-gradient-to-t from-slate-900 to-transparent top-0 
+  }
+
+.text-primary {
+    --tw-text-opacity: 1;
+    color: rgb(14 211 207/var(--tw-text-opacity));
+}
+.bg-primary {
+    --tw-bg-opacity: 1;
+    background-color: rgb(14 211 207/var(--tw-bg-opacity));
 }
