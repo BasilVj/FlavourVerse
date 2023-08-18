@@ -5,7 +5,7 @@ const RecipeInfo = ({ recipeDetails }) => {
     <div className="text-white flex justify-center">
       {recipeDetails && (
         <>
-          <div className="mr-10">
+          <div className="m:mr-10 mr-5">
             <button
               className="text-white text-center border border-gray-500 py-1.5 
             px-3 rounded-full mb-2"
@@ -16,7 +16,7 @@ const RecipeInfo = ({ recipeDetails }) => {
               CALORIES
             </p>
           </div>
-          <div className="mr-10">
+          <div className="md:mr-10 mr-5">
             <button
               className="text-white text-center border border-gray-500 py-1.5
              px-7 rounded-full mb-2"

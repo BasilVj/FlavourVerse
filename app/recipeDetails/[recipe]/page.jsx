@@ -2,22 +2,44 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import RecipeInfo from "@/components/RecipeInfo";
 import RecipeIngrediants from "@/components/RecipeIngrediants";
 import ReactLoading from "react-loading";
 import { addItemToFavourites } from "@/redux/recipeSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const page = ({ params }) => {
+  const [itemAdded, setItemAdded] = useState(false);
   const [recipeDetails, setRecipeDetails] = useState(null);
   const [loading, setLoading] = useState(true); // Add loading state
   const uri = params.recipe;
-  const dispatch = useDispatch()
+  const favourites = useSelector((state) => state.recipe.value.favourites);
+  const dispatch = useDispatch();
 
-  const addITem = () => {
-    const item = {recipeName:recipeDetails.hits[0].recipe.label}
-    dispatch(addItemToFavourites(item))
-  }
+  const addItem = () => {
+    const newItem = {
+      recipeName: recipeDetails.hits[0].recipe.label,
+      cuisineType: recipeDetails.hits[0].recipe.cuisineType,
+      mealType: recipeDetails.hits[0].recipe.mealType,
+      image: recipeDetails.hits[0].recipe.image,
+    };
+
+    let isAlreadyAdded = false;
+
+    favourites.forEach((item) => {
+      if (item.recipeName === newItem.recipeName) {
+        isAlreadyAdded = true;
+      }
+    });
+    if (!isAlreadyAdded) {
+      dispatch(addItemToFavourites(newItem));
+      setItemAdded(true);
+    }
+    
+  };
 
   async function getRecipeDetails() {
     try {
@@ -63,7 +85,21 @@ const page = ({ params }) => {
             <h1 className="text-white text-4xl md:text-5xl font-bold text-center mb-5 px-5 md:px-0">
               {recipeDetails.hits[0].recipe.label}
             </h1>
-          <button className="text-white cursor-pointer" onClick={addITem}>Add to favourites</button>
+
+            {itemAdded ? (
+              <button className="button">
+                Added to favorites
+                <FontAwesomeIcon icon={faCheck} className="ml-2" />
+              </button>
+            ) : (
+              <button
+                className="button"
+                onClick={addItem}
+              >
+                Add to favorites
+                <FontAwesomeIcon icon={faPlus} className="ml-2" />
+              </button>
+            )}
           </div>
           <div className="h-full bg-black">
             {recipeDetails ? (

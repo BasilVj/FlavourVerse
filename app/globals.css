@@ -9,15 +9,29 @@ body {
     font-family: 'Nunito', sans-serif;
 }
 
-.bg_gradient{
-    @apply bg-gradient-to-t from-slate-900 to-transparent top-0 
-  }
+.bg_gradient {
+    @apply bg-gradient-to-t from-slate-900 to-transparent top-0
+}
 
 .text-primary {
     --tw-text-opacity: 1;
     color: rgb(14 211 207/var(--tw-text-opacity));
 }
+
 .bg-primary {
     --tw-bg-opacity: 1;
     background-color: rgb(14 211 207/var(--tw-bg-opacity));
+}
+
+.button {
+    border: 2px solid #24b4fb;
+    background-color: #24b4fb;
+    border-radius: 0.9em;
+    padding: 0.8em 1.2em 0.8em 1em;
+    transition: all ease-in-out 0.2s;
+    font-size: 16px;
+}
+
+.button:hover {
+    background-color: #0071e2;
 }

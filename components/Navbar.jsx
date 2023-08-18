@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <nav className="flex items-center justify-between py-3 bg-black opacity-90 md:px-[4rem] w-full fixed z-10">
-      <div className="flex items-center hover:cursor-pointer">
+      <div className="flex items-center hover:cursor-pointer hidden md:flex">
         <Image src="/logo.png" alt="logo" width={56} height={56} />
         <div>
           <span className="text-lg text-white">Flavor</span>
@@ -28,7 +28,7 @@ const Navbar = () => {
             <Link href="/">Home</Link>
           </li>
           <li className="mx-3 hover:text-green-600">
-            <Link href="#explore">Explore</Link>
+            <Link href="/#explore">Explore</Link>
           </li>
 
           <li className="mx-3 hover:text-green-600">
@@ -37,15 +37,15 @@ const Navbar = () => {
         </ul>
       </div>
       <SignedIn>
-        <div className="flex items-center">
-          <h1 className="text-white pr-3">Profile</h1>
+        <div className="flex items-center pl-5 md:pl-0">
+          <h1 className="text-white pr-3 hidden md:flex">Profile</h1>
           <UserButton afterSignOutUrl="/" />
         </div>
       </SignedIn>
       <SignedOut>
         <SignInButton mode="modal">
-          <button className="border rounded-full px-9 py-2 group-hover:bg-white">
-            <h1 className="text-white group-hover:text-black">Sign in</h1>
+          <button className="border ml-5 md:ml-0 rounded-full px-5 py-2 md:px-9 md:py-2 group-hover:bg-white">
+            <h1 className="text-white text-xs md:text-lg group-hover:text-black">Sign in</h1>
           </button>
         </SignInButton>
       </SignedOut>

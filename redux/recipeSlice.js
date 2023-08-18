@@ -25,9 +25,15 @@ export const recipeSlice = createSlice({
     setDisplayingLoginPage: (state, action) => {
       state.value.displayingLoginPage = action.payload;
     },
+
     addItemToFavourites: (state, action) => {
       state.value.favourites = [...state.value.favourites, action.payload];
-    },    
+    },
+    removeItemFromFavourites: (state, action) => {
+      state.value.favourites = state.value.favourites.filter(
+        (item) => item.recipeName !== action.payload
+      );
+    },
   },
 });
 
@@ -37,5 +43,6 @@ export const {
   handleEmptySearchTerm,
   setDisplayingLoginPage,
   addItemToFavourites,
+  removeItemFromFavourites,
 } = recipeSlice.actions;
 export default recipeSlice.reducer;
