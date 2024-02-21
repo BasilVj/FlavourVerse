@@ -1,5 +1,5 @@
 "use client";
-import SearchResults from "./searchResults";
+import SearchResults from "./SearchResults";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 
